@@ -62,7 +62,7 @@ class DesktopLauncherSkill(MycroftSkill):
         self.register_intent(launchZpodsWebiste, self.launchZpods)
 
     def launchZpods(self, message):
-        webbrowser.open("www.zpods.tech")
+        webbrowser.open("https://www.zpods.tech")
 
     def handle_launch_website(self, message):
         site = message.data.get("Website")
