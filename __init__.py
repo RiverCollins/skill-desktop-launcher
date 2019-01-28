@@ -48,15 +48,21 @@ class DesktopLauncherSkill(MycroftSkill):
     def initialize(self):
         tokenizer = EnglishTokenizer()
 
-        launch_website_intent = IntentBuilder(
-            "LaunchWebsiteIntent").require("LaunchKeyword").require(
-            "Website").build()
-        self.register_intent(launch_website_intent, self.handle_launch_website)
+        # launch_website_intent = IntentBuilder(
+        #     "LaunchWebsiteIntent").require("LaunchKeyword").require(
+        #     "Website").build()
+        # self.register_intent(launch_website_intent, self.handle_launch_website)
 
-        search_website = IntentBuilder("SearchWebsiteIntent").require(
-            "SearchKeyword").require("Website").require(
-            "SearchTerms").build()
-        self.register_intent(search_website, self.handle_search_website)
+        # search_website = IntentBuilder("SearchWebsiteIntent").require(
+        #     "SearchKeyword").require("Website").require(
+        #     "SearchTerms").build()
+        # self.register_intent(search_website, self.handle_search_website)
+
+        launchZpodsWebiste = IntentBuilder('LaunchWebSite').require('LaunchKeyword').require('zpodsWebsite').build()
+        self.register_intent(launchZpodsWebiste, self.launchZpods)
+
+    def launchZpods(self, message):
+        webbrowser.open("www.zpods.tech")
 
     def handle_launch_website(self, message):
         site = message.data.get("Website")
